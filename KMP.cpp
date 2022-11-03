@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 #include "KMP.h"
 
-using namespace std;
-
 //codigo basado en la implementacion de geekforgeeks https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
-void KMP::computeLPSArray(string pat, int M, int* lps){
+void KMP::computeLPSArray(std::string pat, int M, int* lps){
 	int len = 0;
 	lps[0] = 0; // lps[0] is always 0
 	int i = 1;
@@ -25,7 +23,7 @@ void KMP::computeLPSArray(string pat, int M, int* lps){
 		}
 	}
 }
-KMP::KMP(const string &s): _t(s){
+KMP::KMP(const std::string &s): _t(s){
 }
 
 unsigned KMP::count(const std::string &pat){

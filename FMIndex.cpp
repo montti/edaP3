@@ -5,7 +5,7 @@ FMIndex::FMIndex(const std::string &s, int offset): _t(s), _offset(offset){
     size_t _t_size = _t.size() + 1;
     std::vector<int> _arr(_t_size);
     _t.push_back('$');
-    std::string_view _sv = string_view(_t);
+    _sv = std::string_view(_t);
     iota(_arr.begin(), _arr.end(), 0);
 	//ordenar los indices dependiendo de los sufijos de esa posición 
 	sort(_arr.begin(), _arr.end(),
@@ -26,9 +26,8 @@ FMIndex::FMIndex(const std::string &s, int offset): _t(s), _offset(offset){
         if(_arr[i] == 0) L.push_back('$');
         else L.push_back(_t[_arr[i] - 1]);
     }
-    
-
 }
 FMIndex::~FMIndex() {}
 unsigned FMIndex::count(const std::string &pat){
+    return 1;
 }

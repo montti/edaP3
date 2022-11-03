@@ -3,6 +3,7 @@
 class FMIndex {
 	private:
 		int _offset;
+		std::string_view _sv;
 		std::vector<std::pair<char, int>> F;
 		std::vector<char> L;
 		//std::vector<int> SA_Sample; //no es necesaria para realizar count
