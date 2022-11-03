@@ -1,16 +1,14 @@
 #include <bits/stdc++.h>
 
-using namespace std;
-
 class FMIndex {
 	private:
-		vector<char> F;
-		vector<char> L;
-		vector<int> SA_Sample;
-		vector<int> Checkpoits; //no es necesaria para realizar count
-		string _t;
+		std::vector<char> F;
+		std::vector<char> L;
+		std::vector<int> SA_Sample;
+		std::vector<int> Checkpoits; //no es necesaria para realizar count
+		std::string _t;
 	public:
-		FMIndex(const string &s);
+		FMIndex(const std::string &s);
 		~FMIndex();
-		unsigned count(string pat);
+		unsigned count(const std::string &pat);
 };
