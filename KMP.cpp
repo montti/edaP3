@@ -28,7 +28,7 @@ void KMP::computeLPSArray(string pat, int M, int* lps){
 KMP::KMP(const string &s): _t(s){
 }
 
-unsigned KMP::count(const string pat){
+unsigned KMP::count(const std::string &pat){
 	int count = 0;
 	int M = pat.length();
 	int N = _t.length();
