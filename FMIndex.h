@@ -2,13 +2,14 @@
 
 class FMIndex {
 	private:
-		std::vector<char> F;
+		int _offset;
+		std::vector<std::pair<char, int>> F;
 		std::vector<char> L;
-		std::vector<int> SA_Sample;
-		std::vector<int> Checkpoits; //no es necesaria para realizar count
+		//std::vector<int> SA_Sample; //no es necesaria para realizar count
+		std::vector<int> Checkpoits; 
 		std::string _t;
 	public:
-		FMIndex(const std::string &s);
+		FMIndex(const std::string &s, int _offset);
 		~FMIndex();
 		unsigned count(const std::string &pat);
 };

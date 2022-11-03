@@ -3,7 +3,7 @@
 class SuffixArray {
 	private:
         std::string _t;
-        string_view _sv;
+        std::string_view _sv;
         std::vector<unsigned> _arr;
 	public:
 		SuffixArray(const std::string &s);

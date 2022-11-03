@@ -7,7 +7,7 @@ SuffixArray::SuffixArray(const string &s) : _t(s), _arr(s.size() + 1){
 	//agregar el caracter $ como fin del string
 	_t.push_back('$');
 	//almacena referencias de todos los suffix
-	_sv = string_view(_t);
+	_sv = std::string_view(_t);
 	//Rellenar _arr con 0 , 1, 2 ...
 	iota(_arr.begin(), _arr.end(), 0);
 	//ordenar los indices dependiendo de los sufijos de esa posición 
