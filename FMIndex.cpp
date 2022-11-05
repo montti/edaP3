@@ -15,6 +15,7 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
          {
              return this->_sv.substr(l) < this->_sv.substr(r);
          });
+    // Crear vector F y L
     char actual_char = '$';
     int actual_cont = 0;
     for (size_t i = 0; i < _t_size; i++)
@@ -32,6 +33,10 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         else
             L.push_back(_t[_arr[i] - 1]);
     }
+    F.push_back(std::make_pair(actual_char, actual_cont));
+    // INGRESAR EL ULTIMO CARACTER
+
+    // Crear map C
     std::map<char, int> aux;
     int _sum = 0;
     for (size_t i = 0; i < F.size(); i++)
@@ -42,6 +47,7 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         _sum += F.at(i).second;
     }
 
+    // Crear map OCC
     for (size_t i = 0; i < L.size(); i++)
     {
         aux[L[i]] = aux[L[i]] + 1;
@@ -56,13 +62,12 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
 
     for (std::pair<char, std::vector<int>> item1 : OCC)
     {
-        std::cout << "-------------------------------------" << std::endl;
-        std::cout << item1.first << std::endl;
-        std::cout << item1.second.size() << std::endl;
+        std::cout << item1.first << ":";
         for (int item2 : item1.second)
         {
-            std::cout << item2 << std::endl;
+            std::cout << item2 << " ";
         }
+        std::cout << std::endl;
     }
 }
 FMIndex::~FMIndex() {}
