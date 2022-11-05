@@ -44,10 +44,11 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
 
     for (size_t i = 0; i < L.size(); i++)
     {
-        aux[L[i]]++;
+        aux[L[i]] = aux[L[i]] + 1;
         if (i % _offset == 0)
         {
-            for (std::pair<char, int> item2 : aux){
+            for (std::pair<char, int> item2 : aux)
+            {
                 OCC[item2.first].push_back(item2.second);
             }
         }
@@ -57,6 +58,7 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
     {
         std::cout << "-------------------------------------" << std::endl;
         std::cout << item1.first << std::endl;
+        std::cout << item1.second.size() << std::endl;
         for (int item2 : item1.second)
         {
             std::cout << item2 << std::endl;
