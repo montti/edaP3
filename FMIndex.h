@@ -6,6 +6,7 @@ class FMIndex {
 		std::string_view _sv;
 		std::vector<std::pair<char, int>> F;
 		std::vector<char> L;
+		std::map<char, int> C;  
 		//std::vector<int> SA_Sample; //no es necesaria para realizar count
 		std::vector<int> Checkpoits; 
 		std::string _t;

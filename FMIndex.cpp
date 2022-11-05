@@ -26,6 +26,12 @@ FMIndex::FMIndex(const std::string &s, int offset): _t(s), _offset(offset){
         if(_arr[i] == 0) L.push_back('$');
         else L.push_back(_t[_arr[i] - 1]);
     }
+    int _sum = 0;
+    for (size_t i = 0; i < F.size(); i++){
+        C[F.at(i).first] = _sum;
+        _sum += F.at(i).second;
+    }
+    
 }
 FMIndex::~FMIndex() {}
 unsigned FMIndex::count(const std::string &pat){
