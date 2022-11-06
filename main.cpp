@@ -16,5 +16,6 @@ int main(int argc, char const *argv[]){
     if(argc != 2) return 1;
     string texto = readFileIntoString(argv[1]);
     FMIndex A = FMIndex(texto,1);
+    cout << A.count("iss") << endl;
     return 0;
 }

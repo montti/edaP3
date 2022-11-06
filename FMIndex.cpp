@@ -46,7 +46,6 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         C[F.at(i).first] = _sum;
         _sum += F.at(i).second;
     }
-
     // Crear map OCC
     for (size_t i = 0; i < L.size(); i++)
     {
@@ -73,5 +72,31 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
 FMIndex::~FMIndex() {}
 unsigned FMIndex::count(const std::string &pat)
 {
-    return 1;
+
+    int i = pat.size() - 1;
+    char c = pat[i];
+    if (C.find(c) == C.end())
+        return 0;
+    int sp = C[c] + 1;
+    auto it = C.find(c);
+    it++;
+    int ep;
+    if (it != C.end())
+        ep = it->second;
+    else
+        ep = _t.size() - 1;
+    while (sp <= ep && i >= 2)
+    {
+        c = pat[i - 1];
+        std::cout << c << " ";
+        if (C.find(c) == C.end())
+            return 0;
+        sp = C[c] + OCC[c][sp - 1] + 1;
+        ep = C[c] + OCC[c][ep];
+        i--;
+    }
+    if (ep < sp)
+        return 0;
+    else
+        return ep - sp + 1;
 }
