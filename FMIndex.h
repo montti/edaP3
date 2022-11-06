@@ -1,16 +1,5 @@
 #include <bits/stdc++.h>
 
-struct comp
-{
-	template <typename T>
-
-	// Comparator function
-	bool operator()(const T &l, const T &r) const
-	{
-		return l.first > r.first;
-	}
-};
-
 class FMIndex
 {
 private:
