@@ -1,11 +1,16 @@
 #include <bits/stdc++.h>
 
+using namespace std;
+
 class KMP {
 	private:
-		std::string _t;
-		void computeLPSArray(std::string pat, int M, int* lps);
+		vector<int> tabla;
+		string w;
 	public:
-		KMP(const std::string &s);
+		KMP();
 		~KMP();
-		unsigned count(const std::string &pat);
+		void generarTabla(const string &w);
+		vector<int> busqueda(const string &s);
+		int matches(const string &s);
+		unsigned int memoria();
 };
