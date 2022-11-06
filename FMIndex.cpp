@@ -75,6 +75,7 @@ unsigned FMIndex::count(const std::string &pat)
 {
     int i = pat.size() - 1;
     char c = pat[i];
+    //retornar 0 si el caracter no existe en el texto
     if (C.find(c) == C.end())
         return 0;
     int sp = C[c] + 1;
@@ -85,8 +86,11 @@ unsigned FMIndex::count(const std::string &pat)
         ep = it->second;
     else
         ep = _t.size();
+    
+    //mientras se tengan al menos 2 caracteres y se pueda continuar, avanzar a la siguiente letra
     while (sp <= ep && i >= 1){
         c = pat[i - 1];
+        //retornar 0 si el caracter no existe en el texto
         if (C.find(c) == C.end())
             return 0;
         sp = C[c] + Occ(c,sp - 2) + 1;
