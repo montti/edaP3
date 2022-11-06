@@ -104,6 +104,16 @@ double promedio(const vector<double> &v) {
 	return (aux / (double) v.size()); 
 }
 
+double varianza(const vector<double> &v, double prom) {
+	double var = 0;
+
+	for (double i : v) {
+		var += (i - prom) * (i - prom);
+	}
+
+	return (var / (double) v.size());
+}
+
 int main(int argc, char const *argv[]){
 	string filename(argv[1]);
 	int w_size = stoi(argv[2]);
@@ -189,11 +199,25 @@ int main(int argc, char const *argv[]){
 	//cout << tBusSA << " " << tBusKMP << endl;
 	//cout << tConsSA << " " << tConsKMP << endl;
 
+	double prom_tBusSA = promedio(tBusSA);
+	double prom_tBusKMP = promedio(tBusKMP);
+	double prom_tBusFM = promedio(tBusFM);
+	double prom_tConsSA = promedio(tConsSA);
+	double prom_tConsKMP = promedio(tConsKMP);
+	double prom_tConsFM = promedio(tConsFM);
+
+	double var_tBusSA = varianza(tBusSA, prom_tBusSA);
+	double var_tBusKMP = varianza(tBusKMP, prom_tBusKMP);
+	double var_tBusFM = varianza(tBusFM, prom_tBusFM);
+	double var_tConsSA = varianza(tConsSA, prom_tConsSA);
+	double var_tConsKMP = varianza(tConsKMP, prom_tConsKMP);
+	double var_tConsFM = varianza(tConsFM, prom_tConsFM);
+
 	ofstream log(logfile, ios_base::app | ios_base::out);
 
 	cout << "Imprimiendo... " << size << endl;
 
-	log << size << "," << promedio(tBusSA) << "," << promedio(tBusKMP) << "," << promedio(tBusFM) << "," << promedio(tConsSA) << "," << promedio(tConsKMP) << promedio(tConsFM) << endl;
+	log << size << "," << prom_tBusSA << "," << prom_tBusKMP << "," << prom_tBusFM << "," << var_tBusSA << "," << var_tBusKMP << "," << var_tBusFM << "," << prom_tConsSA << "," << prom_tConsKMP << "," << prom_tConsFM << "," << var_tConsSA << "," << var_tConsKMP << "," << var_tConsFM << endl;
 
 	log.close();
 }
