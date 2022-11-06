@@ -58,23 +58,8 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
             }
         }
     }
-/**
-    for (std::pair<char, std::vector<int>> item1 : OCC)
-    {
-        std::cout << item1.first << ":";
-        for (int item2 : item1.second)
-        {
-            std::cout << item2 << " ";
-        }
-        std::cout << std::endl;
-    }
-    for (std::pair<char, int> item1 : C)
-    {
-        std::cout << item1.first << ":"<<item1.second;
-        std::cout << std::endl;
-    }
-**/
 }
+
 FMIndex::~FMIndex() {}
 unsigned FMIndex::count(const std::string &pat)
 {
