@@ -10,7 +10,6 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
     iota(_arr.begin(), _arr.end(), 0);
     // ordenar los indices dependiendo de los sufijos de esa posición
     sort(_arr.begin(), _arr.end(),
-         // alternativa 1
          [this](unsigned l, unsigned r) -> bool
          {
              return this->_sv.substr(l) < this->_sv.substr(r);
@@ -33,8 +32,8 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         else
             L.push_back(_t[_arr[i] - 1]);
     }
-    F.push_back(std::make_pair(actual_char, actual_cont));
     // INGRESAR EL ULTIMO CARACTER
+    F.push_back(std::make_pair(actual_char, actual_cont));
 
     // Crear map C
     std::map<char, int> aux;
@@ -60,10 +59,13 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
     }
 }
 FMIndex::~FMIndex() {}
+//Calcular OCC dependiendo del offset
 unsigned FMIndex::Occ(char c, int pos){
     int bloque = pos / _offset;
     int resto = pos % _offset;
+    //almacenar resultado parcial
     int _occ = OCC[c][bloque];
+    //calcular valor real
     for (size_t i = 1; i <= resto; i++){
         if(L[bloque * _offset + i] == c) _occ++;
     }
