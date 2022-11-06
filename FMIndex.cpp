@@ -47,7 +47,7 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         _sum += F.at(i).second;
     }
     // Crear map OCC
-    for (size_t i = 0; i < _t.size(); i++)
+    for (size_t i = 0; i < L.size(); i++)
     {
         aux[L[i]] = aux[L[i]] + 1;
         if (i % _offset == 0)
@@ -59,8 +59,16 @@ FMIndex::FMIndex(const std::string &s, int offset) : _t(s), _offset(offset)
         }
     }
 }
-
 FMIndex::~FMIndex() {}
+unsigned FMIndex::Occ(char c, int pos){
+    int bloque = pos / _offset;
+    int resto = pos % _offset;
+    int _occ = OCC[c][bloque];
+    for (size_t i = 1; i <= resto; i++){
+        if(L[bloque * _offset + i] == c) _occ++;
+    }
+    return _occ;
+}
 unsigned FMIndex::count(const std::string &pat)
 {
     int i = pat.size() - 1;
@@ -79,8 +87,8 @@ unsigned FMIndex::count(const std::string &pat)
         c = pat[i - 1];
         if (C.find(c) == C.end())
             return 0;
-        sp = C[c] + OCC[c][sp - 2] + 1;
-        ep = C[c] + OCC[c][ep - 1];
+        sp = C[c] + Occ(c,sp - 2) + 1;
+        ep = C[c] + Occ(c,ep - 1);
         i--;
     }
     if (ep < sp)

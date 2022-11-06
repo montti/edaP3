@@ -12,6 +12,7 @@ private:
 	// std::vector<int> SA_Sample; //no es necesaria para realizar count
 	// std::vector<int> Checkpoits;
 	std::string _t;
+	unsigned Occ(char c, int i);
 
 public:
 	FMIndex(const std::string &s, int _offset);
